@@ -1,0 +1,24 @@
+body{
+    background-image: url(../img/airlift-bg.png);
+}
+.martop-50{
+    margin-top: 50px;
+}
+.martop-40{
+     margin-top: 40px;
+ }
+.martop-30{
+    margin-top: 30px;
+}
+.martop-20{
+    margin-top: 20px;
+}
+/*登陆页*/
+.login-panel .card{
+    /*background-color: #FFFFFF;*/
+    /*box-shadow: 0 1px 1px rgba(0,0,0,.06);*/
+}
+
+.errtext{
+    color: #ff0000;
+}

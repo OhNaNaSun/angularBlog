@@ -23,6 +23,7 @@ app.use(session({
     secret: 'angularblogsession', // 建议使用 128 个字符的随机字符串
     cookie: { maxAge: 60 * 1000 * 60 * 24 * 30 },//30 days
     maxAge: Date.now() + (30 * 86400 * 1000),
+    expires: new Date(Date.now() + (30 * 86400 * 1000)),
     rolling: true,
     resave: true,
     saveUninitialized: true

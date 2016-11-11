@@ -1,7 +1,7 @@
 'use strict';
 define(['../app', 'i18n!resources/nls/res'], function(app, res){
-    return app.controller('LayoutController', function($scope, $http, USER_ROLES, AuthService){
-        $http.get("/checklogin").success(function(user){
+    return app.controller('LayoutController', function($scope, $http, USER_ROLES){
+        $http.get("/checklogin").then(function(user){
             $scope.setCurrentUser(user);
         })
         $scope.setCurrentUser = function(user){

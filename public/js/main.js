@@ -2,7 +2,7 @@ requirejs.config({
     //By default load any module IDs from js/lib
     paths: {
         "jquery": '../lib/jquery/jquery',
-        "angular": "../lib/angular/angular.min",
+        "angular": "../lib/angular/angular",
         "angular-ui-router": "../lib/angular/angular-ui-router.min",
         "bootstrap": "../lib/bootstrap-3.3.7-dist/js/bootstrap.min",
         "i18n": "../lib/require/i18n"
@@ -30,6 +30,7 @@ require(
         'controllers/layout',
         'controllers/index',
         'directives/compare',
+        'directives/loginDialog',
         'services/authService',
         'routes'
     ],

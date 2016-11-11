@@ -1,7 +1,7 @@
 define(["app", "controllers/index", "controllers/login", "controllers/logout", "controllers/signup", "controllers/feedback"],
     function (app, index, login, logout, signup, feedback) {
         return app
-            .config(["$stateProvider", "$urlRouterProvider", "USER_ROLES","$httpProvider", function ($stateProvider, $urlRouterProvider, USER_ROLES, $httpProvider) {//用constant注册的服务
+            .config(["$stateProvider", "$urlRouterProvider", "USER_ROLES","$httpProvider",  function ($stateProvider, $urlRouterProvider, USER_ROLES, $httpProvider) {//用constant注册的服务
                 $urlRouterProvider.otherwise('/');
                 $stateProvider
                     .state("/", {
@@ -45,12 +45,7 @@ define(["app", "controllers/index", "controllers/login", "controllers/logout", "
                             login: true
                         }
                     })
-                $httpProvider.interceptors.push([
-                    "$injector",
-                    function(){
-
-                    }
-                ])
+                $httpProvider.interceptors.push("AuthInterceptor")
             }])
             .run(function ($rootScope, $location, AUTH_EVENTS, AuthService) {
                 $rootScope.$on("$stateChangeStart", function (evt, next, current) {

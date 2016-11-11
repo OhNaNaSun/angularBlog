@@ -1,3 +1,4 @@
+//对比密码与第二次输入的密码是否一样
 define(["app"], function(app){
     app.directive('compare', function(){
         return {

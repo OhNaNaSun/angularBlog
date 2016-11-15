@@ -1,6 +1,9 @@
 body{
     background-image: url(../img/airlift-bg.png);
 }
+.martop-60{
+    margin-top: 60px;
+}
 .martop-50{
     margin-top: 50px;
 }

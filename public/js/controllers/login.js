@@ -20,10 +20,15 @@ define(["i18n!resources/nls/res"], function(res){
             }*/
 
             $scope.login = function(user){
-                AuthService.login(user).then(function(loggedUser){
-                    $rootScope.$broadcast(AUTH_EVENTS.loginSuccess);
-                    $scope.$parent.setCurrentUser(loggedUser);//向父级controller传递当前用户信息
-                    $location.path("/");
+                AuthService.login(user).then(function(data){
+                   if(data.user) {
+                       $rootScope.$broadcast(AUTH_EVENTS.loginSuccess);
+                       $scope.$parent.setCurrentUser(data.user);//向父级controller传递当前用户信息
+                       $location.path("/");
+                   }else if(data.err){
+                       $scope.err = data.err;
+                       $rootScope.$broadcast(AUTH_EVENTS.loginFailed)
+                   }
                 }, function(){
                     $rootScope.$broadcast(AUTH_EVENTS.loginFailed)
                 })

@@ -20,7 +20,7 @@ define(["app"], function (app) {
                 return $http
                     .post("/login", user)
                     .then(function (res) {
-                        return res.data.user;
+                        return res.data;
                     })
             }
 

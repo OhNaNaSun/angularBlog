@@ -5,6 +5,7 @@ requirejs.config({
         "angular": "../lib/angular/angular",
         "angular-ui-router": "../lib/angular/angular-ui-router.min",
         "bootstrap": "../lib/bootstrap-3.3.7-dist/js/bootstrap.min",
+        "angular-ui-bootstarp": "../lib/angular/ui-bootstrap-tpls-2.2.0",
         "i18n": "../lib/require/i18n"
     },
     shim: {
@@ -16,6 +17,10 @@ requirejs.config({
         },
         "bootstrap": {
             deps: ["jquery"]
+        },
+        "angular-ui-bootstarp": {
+            deps: ["angular"]
+            // exports:"ui.bootstrap"
         }
     },
     urlArgs: 'v=1.0.0'
@@ -24,11 +29,13 @@ requirejs.config({
 require(
     [
         'angular',
-        'app',
         'jquery',
+        'angular-ui-router',
+        'angular-ui-bootstarp',
+        'app',
+        'controllers/leftSidebar',
         'bootstrap',
         'controllers/layout',
-        'controllers/index',
         'directives/compare',
         'directives/loginDialog',
         'services/authService',

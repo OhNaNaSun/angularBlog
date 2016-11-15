@@ -13,7 +13,7 @@ define(['i18n!resources/nls/res'], function(res){
                 if(data.err){
                     return $scope.err = data.err;
                 }
-                $scope.$parent.setCurrentUser(data);
+                $scope.$parent.setCurrentUser(data.user);
                 $location.path("/");
             })
         }

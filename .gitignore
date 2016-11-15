@@ -5,3 +5,8 @@ local.ns
 .DS_Store
 storage.bson
 journal
+angularblog.0
+angularblog.ns
+_tmp
+njblog.0
+njblog.ns

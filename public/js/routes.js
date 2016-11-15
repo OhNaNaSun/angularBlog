@@ -12,7 +12,7 @@ define(["app", "controllers/index", "controllers/login", "controllers/logout", "
                             login: false
                         }
                     })
-                    .state("/login", {
+                 .state("/login", {
                         url: "/login",
                         templateUrl: "partials/login.html",
                         controller: login,
@@ -45,7 +45,7 @@ define(["app", "controllers/index", "controllers/login", "controllers/logout", "
                             login: true
                         }
                     })
-                $httpProvider.interceptors.push("AuthInterceptor")
+                    $httpProvider.interceptors.push("AuthInterceptor")
             }])
             .run(function ($rootScope, $location, AUTH_EVENTS, AuthService) {
                 $rootScope.$on("$stateChangeStart", function (evt, next, current) {
@@ -60,27 +60,6 @@ define(["app", "controllers/index", "controllers/login", "controllers/logout", "
                             }
                         }
                     }
-                    /*if(next.data && next.data.authorizedRoles){
-                     var authorizedRoles = next.data.authorizedRoles||"";
-                     if (!AuthService.isAuthorized(authorizedRoles)) {
-                     evt.preventDefault();
-                     if (AuthService.isAuthenticated()) {
-                     // user is not allowed
-                     $rootScope.$broadcast(AUTH_EVENTS.notAuthorized);
-                     } else {
-                     // user is not logged in
-                     $rootScope.$broadcast(AUTH_EVENTS.notAuthenticated);
-                     }
-                     }
-                     }*/
-
-                    /*if(!AuthService.userLoggedIn()){
-                     if(next.templateUrl === "login.html"){
-
-                     } else {
-                     $location.path("/login");
-                     }
-                     }*/
                 })
             })
     })

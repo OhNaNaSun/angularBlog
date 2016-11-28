@@ -3,7 +3,10 @@ var mongoose = require("mongoose");
 var fs = require("fs");
 var log = require("./../lib/log");
 var db = mongoose.connection;
-db.on("error", console.error);
+db.on("error", function(err){
+    log.error('connect to %s error: ', config.connectionstring, err.message);
+    process.exit(1);
+});
 db.once("open", function(){
     //在这里创建你的模式和模型
     log.success('%s has been connected.', dbconfig.connectionstring)

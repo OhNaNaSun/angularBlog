@@ -6,8 +6,8 @@ module.exports = function(app){
     app.get("/list", user.list);
     app.get("/blog", blog.list);
     app.get("/user", user.list);
-    app.post("/signup", user.create);
-    app.post("/login", user.login);
-    app.get("/logout", user.logout);
-    app.get("/checklogin", index.getLoginUser);
+    app.post("/api/signup", user.create);
+    app.post("/api/login", user.login);
+    app.get("/api/logout", user.logout);
+    app.get("/api/checklogin", index.getLoginUser);
 }

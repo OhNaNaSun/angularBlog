@@ -9,7 +9,7 @@ define(['i18n!resources/nls/res'], function(res){
         }
 
         $scope.signup = function(){
-            $http.post("/signup", $scope.user).success(function(data){
+            $http.post("/api/signup", $scope.user).success(function(data){
                 if(data.err){
                     return $scope.err = data.err;
                 }

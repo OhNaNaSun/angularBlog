@@ -5,7 +5,7 @@ var index = function (req, res) {
     res.sendFile(html)
 };
 function getLoginUser(req, res){
-    res.json(req.session["user"] || [])
+    res.json(req.session["user"] || {})
 }
 module.exports = {
     index: index,

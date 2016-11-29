@@ -33,7 +33,7 @@ function login(req, res){
             return res.json({err: "密码错误"})
         }
         req.session["user"] = user;
-        res.json({"user": user});
+        res.json(user || {});
     })
 }
 function logout(req, res){

@@ -41,7 +41,7 @@ define(["app", "controllers/index", "controllers/login", "controllers/logout", "
                         templateUrl: "partials/feedback.html",
                         controller: feedback,
                         data: {
-                            authorizedRoles: [USER_ROLES.admin, USER_ROLES.editor],
+                            authorizedRoles: [USER_ROLES.admin, USER_ROLES.guest],
                             login: true
                         }
                     })
@@ -50,15 +50,14 @@ define(["app", "controllers/index", "controllers/login", "controllers/logout", "
             .run(function ($rootScope, $location, AUTH_EVENTS, AuthService) {
                 $rootScope.$on("$stateChangeStart", function (evt, next, current) {
                     if (next.data && next.data.login) {
-                        if (AuthService.isAuthenticated() != next.data.login) {//登录状态与设置不符
-                            evt.preventDefault();
-                        } else if (next.data.authorizedRoles) {
-                            var authorizedRoles = next.data.authorizedRoles || "";
-
-                            if (!AuthService.isAuthorized(authorizedRoles)) {//此用户未被授权
+                            if (!!AuthService.currentUser.name != next.data.login) {//登录状态与设置不符
                                 evt.preventDefault();
+                            } else if (next.data.authorizedRoles) {
+                                var authorizedRoles = next.data.authorizedRoles || "";
+                                if (!AuthService.isAuthorized(authorizedRoles)) {//此用户未被授权
+                                    evt.preventDefault();
+                                }
                             }
-                        }
                     }
                 })
             })

@@ -1,8 +1,11 @@
 'use strict';
 define(['../app', 'i18n!resources/nls/res'], function(app, res){
-    return app.controller('LayoutController', function($scope, $http, USER_ROLES){
-        $http.get("/api/checklogin").then(function(user){
-            $scope.setCurrentUser(user);
+    return app.controller('LayoutController', function($scope, $http, USER_ROLES, AuthService){
+
+        AuthService.isAuthenticated()
+            .then(function(user){
+            $scope.setCurrentUser(user||{});
+
         })
         $scope.setCurrentUser = function(user){
             $scope.navArr = [];
@@ -39,7 +42,6 @@ define(['../app', 'i18n!resources/nls/res'], function(app, res){
 
                 ];
             }
-            console.log($scope.navArr);
         }
 
     })

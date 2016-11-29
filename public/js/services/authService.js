@@ -16,27 +16,36 @@ define(["app"], function (app) {
         })
         .factory("AuthService", function ($http) {
             var authService = {};
+            authService.currentUser = {};
             authService.login = function (user) {
                 return $http
                     .post("/api/login", user)
                     .then(function (res) {
-                        return res.data;
+                        authService.currentUser = res.data;
+                        return res.data
                     })
             }
 
             authService.isAuthenticated = function () {
-                $http.get("/api/checklogin").then(function (res) {
-                    if (res.data && res.data.user) {
-                        return res.data.user
-                    }
-                })
+                //是否登路
+               return $http.get("/api/checklogin")
+                       .then(function (res) {
+                           if (res.data) {
+                               authService.currentUser  = res.data;
+                               return res.data
+                               // resolve(res.data)
+                           }else{
+                               // resolve(null);
+                               // reject("没数据")
+                           }
+                       })
             }
             authService.isAuthorized = function (authorizedRoles) {
                 if (!angular.isArray(authorizedRoles)) {
                     authorizedRoles = [authorizedRoles]
                 }
                 var user;
-                return (user = authService.isAuthenticated()) && (authorizedRoles.indexOf(user.userRole) !== -1)
+                return (user = authService.currentUser) && (user.name) && (authorizedRoles.indexOf(user.role) !== -1)
             }
             return authService;
         })

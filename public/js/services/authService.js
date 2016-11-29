@@ -18,14 +18,14 @@ define(["app"], function (app) {
             var authService = {};
             authService.login = function (user) {
                 return $http
-                    .post("/login", user)
+                    .post("/api/login", user)
                     .then(function (res) {
                         return res.data;
                     })
             }
 
             authService.isAuthenticated = function () {
-                $http.get("/checklogin").then(function (res) {
+                $http.get("/api/checklogin").then(function (res) {
                     if (res.data && res.data.user) {
                         return res.data.user
                     }

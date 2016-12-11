@@ -39,6 +39,7 @@ require(
         'directives/compare',
         'directives/loginDialog',
         'services/authService',
+        'services/leftSideConfig',
         'routes'
     ],
     function (angular) {

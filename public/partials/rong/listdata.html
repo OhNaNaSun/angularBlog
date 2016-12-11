@@ -1,0 +1,20 @@
+
+<h2 class="sub-header">{{chapterData.title}}</h2>
+<div class="table-responsive">
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>课程</th>
+            <th>课程Id</th>
+            <th>课程名称</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="video in chapterData.videos track by $index">
+            <td>{{$index}}</td>
+            <td>{{video.id}}</td>
+            <td>{{video.title}}</td>
+        </tr>
+        </tbody>
+    </table>
+</div>

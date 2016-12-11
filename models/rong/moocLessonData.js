@@ -12,13 +12,16 @@ var courseIdArray = [
 ];
 //promiseFiles : promise集合
 var promiseFiles = [];
+var moocPageData = [];
 courseIdArray.forEach(function(item){
     promiseFiles.push(getPageData(baseUrl + item))
 })
 Promise.all(promiseFiles).then(function(pages) {
+    // moocPageData = pages;
     pages.forEach(function(item, index){
-        console.log("--------------------第" + index + "个课程--------------------")
-        printData(filterchapter(item));
+        //console.log("--------------------第" + index + "个课程--------------------")
+        // printData(filterchapter(item));
+        moocPageData.push(filterchapter(item))
     })
 });
 function getPageData(url){
@@ -73,4 +76,4 @@ function printData(data){
         })
     })
 }
-
+module.exports = moocPageData;

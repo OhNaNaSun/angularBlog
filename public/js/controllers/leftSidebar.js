@@ -1,30 +1,21 @@
 'use strict';
 define(["../app"], function(app){
-    return app.controller('AccordionDemoCtrl', function ($scope) {
+    return app.controller('AccordionDemoCtrl', ["$scope", "sideBarConfig", function ($scope, sideBarConfig) {
         $scope.oneAtATime = true;
+        // console.log(sideBarConfig);
+        $scope.groups = sideBarConfig;
 
-        $scope.groups = [
-            {
-                title: 'Dynamic Group Header - 1',
-                content: 'Dynamic Group Body - 1'
-            },
-            {
-                title: 'Dynamic Group Header - 2',
-                content: 'Dynamic Group Body - 2'
-            }
-        ];
-
-        $scope.items = ['Item 1', 'Item 2', 'Item 3'];
+        /*$scope.items = ['Item 1', 'Item 2', 'Item 3'];
 
         $scope.addItem = function() {
             var newItemNo = $scope.items.length + 1;
             $scope.items.push('Item ' + newItemNo);
-        };
+        };*/
 
-        $scope.status = {
+        /*$scope.status = {
             isCustomHeaderOpen: false,
             isFirstOpen: true,
             isFirstDisabled: false
-        };
-    });
+        };*/
+    }]);
 })

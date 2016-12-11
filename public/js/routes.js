@@ -1,18 +1,31 @@
-define(["app", "controllers/index", "controllers/login", "controllers/logout", "controllers/signup", "controllers/feedback"],
-    function (app, index, login, logout, signup, feedback) {
+define([
+        "app",
+        "controllers/index",
+        "controllers/login",
+        "controllers/logout",
+        "controllers/signup",
+        "controllers/feedback",
+        "controllers/rong/listdata"
+    ],
+    function (app, index, login, logout, signup, feedback, listdata) {
         return app
             .config(["$stateProvider", "$urlRouterProvider", "USER_ROLES","$httpProvider",  function ($stateProvider, $urlRouterProvider, USER_ROLES, $httpProvider) {//用constant注册的服务
-                $urlRouterProvider.otherwise('/');
+                $urlRouterProvider.otherwise('/rong');
                 $stateProvider
-                    .state("/", {
-                        url: "/",
-                        templateUrl: 'partials/index.html',
+                    .state("rong", {
+                        url: "/rong",
+                        templateUrl: 'partials/leftSide.html',
                         controller: index,
                         data: {
                             login: false
                         }
                     })
-                 .state("/login", {
+                    .state("rong.listdata", {
+                        url: "/listdata",
+                        templateUrl: 'partials/rong/listdata.html',
+                        controller: listdata
+                    })
+                    .state("login", {
                         url: "/login",
                         templateUrl: "partials/login.html",
                         controller: login,
@@ -20,7 +33,7 @@ define(["app", "controllers/index", "controllers/login", "controllers/logout", "
                             login: false
                         }
                     })
-                    .state("/logout", {
+                    .state("logout", {
                         url: "/logout",
                         // templateUrl: "partials/logout.html",
                         controller: logout,
@@ -28,7 +41,7 @@ define(["app", "controllers/index", "controllers/login", "controllers/logout", "
                             login: true
                         }
                     })
-                    .state("/signup", {
+                    .state("signup", {
                         url: "/signup",
                         templateUrl: "partials/signup.html",
                         controller: signup,
@@ -36,7 +49,7 @@ define(["app", "controllers/index", "controllers/login", "controllers/logout", "
                             login: false
                         }
                     })
-                    .state("/feedback", {
+                    .state("feedback", {
                         url: "/feedback",
                         templateUrl: "partials/feedback.html",
                         controller: feedback,

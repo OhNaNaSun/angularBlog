@@ -5,10 +5,12 @@ var cookieParser = require("cookie-parser");
 var session = require("express-session");
 var express = require("express");
 var logger = require("morgan");
+var compression = require("compression");
 var errorhandler = require("errorhandler");
 var favicon = require("serve-favicon");
 var app = express();
 app.use(logger("dev"));
+app.use(compression());
 app.use(favicon(__dirname + '/public/favicon.ico'));
 //模版的目录
 app.set("views", __dirname + "／views");
